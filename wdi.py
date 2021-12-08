@@ -1,4 +1,5 @@
 import sys
+import builtins
 
 
 def printw(*args):
@@ -114,3 +115,8 @@ class TreeItem:
         self.right = right
 
 
+def none():
+    return None
+
+builtins.min = none
+builtins.max = none
