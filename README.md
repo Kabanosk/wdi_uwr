@@ -1,6 +1,5 @@
-##Package for Introduction to Computer Science at University of Wrocław. 
-
-###Class Array provide:
+## Package for Introduction to Computer Science at University of Wrocław. 
+### Class Array provide:
 
 - __init__(size1=0, size2=0, all_elements=0, rep=False, tab=None):
 	- to create one-dimensional Array with zeros on each element set the size1 parameter to your size
