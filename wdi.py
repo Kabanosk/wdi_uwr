@@ -31,14 +31,13 @@ class Array:
         if rep:
             if size2 > 0: self.__items = [Array(size1, rep=True) for _ in range(size2)]
             else: self.__items = list(range(0, size1))
-        if tab:
+        elif tab:
             self.__items = tab
-            self.__size1 = len(tab)
+            self.__sizes = self.__see_dimentions(tab, [])
         else:
-            self.__size1 = size1
-            self.__size2 = size2
-            if self.__size2 >= 1:
-                self.__items = [Array(size2, all_elements=all_elements) for _ in range(size2)]
+            self.__sizes = (size1, size2)
+            if size2 > 0:
+                self.__items = [Array(size1, all_elements=all_elements) for _ in range(size2)]
             else:
                 self.__items = size1 * [all_elements]
 
@@ -53,33 +52,16 @@ class Array:
         return self.__items[i]
 
     def __len__(self):
-        if self.__size2:
-            return self.__size1, self.__size2
-        return self.__size1
+        if self.__sizes[1]:
+            return self.__sizes
+        return self.__sizes[0]
 
-    def __reversed__(self):
-        if self.__size2:
-            tmp = [self.__items[i].__items for i in range(self.__size1)]
-            transpose = self.__transpose(tmp)
-            self.__items = []
-            for i in range(self.__size2):
-                self.__items.append(Array(tab=transpose[i]))
-            self.switching_sizes()
-        else:
-            self.__items = self.__items[::-1]
-
-    @staticmethod
-    def __transpose(array):
-        transpose = []
-        for i in range(len(array[0])):
-            row = []
-            for item in array:
-                row.append(item[i])
-            transpose.append(row)
-        return transpose
-
-    def switching_sizes(self):
-        self.__size1, self.__size2 = self.__size2, self.__size1
+    def __see_dimentions(self, tab, dim):
+        try:
+            dim.append(len(tab[0]))
+            return self.__see_dimentions(tab[0], dim)
+        except IndexError:
+            return dim
 
     def print(self):
         if self.__size2:
@@ -120,3 +102,10 @@ def none():
 
 builtins.min = none
 builtins.max = none
+builtins.bin = none
+builtins.all = none
+builtins.any = none
+builtins.eval = none
+builtins.hex = none
+builtins.oct = none
+builtins.sum = none
