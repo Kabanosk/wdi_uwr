@@ -10,7 +10,7 @@
  
 - Operator overloading:
 	- __setitem__(i, x) - setting the i-th element to x
-	- __getitem__(i, x) - getting the i-th element
+	- __getitem__(i) - getting the i-th element
 	- __len__() - for two-dimensional Array return tuple (size1, size2), for one-dimensional Array return size1
 
 - other:
