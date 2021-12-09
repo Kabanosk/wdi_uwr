@@ -64,12 +64,12 @@ class Array:
             return dim
 
     def print(self):
-        if self.__size2:
+        if self.__sizes[1]:
             print('[')
         else:
             print('[', end='\t')
-        for i in range(self.__size1):
-            if self.__size2:
+        for i in range(self.__sizes[0]):
+            if self.__sizes[1]:
                 print(end='\t')
                 self.__print(self[i])
             else:
