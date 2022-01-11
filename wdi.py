@@ -56,13 +56,6 @@ class Array:
             return self.__sizes
         return self.__sizes[0]
 
-    def __see_dimentions(self, tab, dim):
-        try:
-            dim.append(len(tab[0]))
-            return self.__see_dimentions(tab[0], dim)
-        except IndexError:
-            return dim
-
     def print(self):
         if self.__sizes[1]:
             print('[')
